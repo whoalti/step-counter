@@ -1,0 +1,46 @@
+
+  
+  .step-count {
+    font-size: 30px;
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+  
+  .progressbar-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px; // space between links
+    color: #888;
+    padding-right: 10px;
+    margin-bottom: 0;
+  
+    a {
+      text-decoration: none;
+      color: #888;
+      padding-left: 3px;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  
+    p {
+      margin-bottom: 0;
+      margin-top: 3px;
+    }
+  }
+  
+  .progress-bar {
+    background-color: #e1e0e0;
+  }
+  
+  .label {
+    font-size: 20px;
+    color: green;
+  }
+  
+  .progress-label {
+    color: #7a7a7a;
+  }
+  
