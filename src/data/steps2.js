@@ -1,6 +1,6 @@
 export const steps = [
     {
-      steps: 0,
+      steps: 50,
       start_time: "2024-11-09T00:00:00.000Z",
       end_time: "2024-11-09T00:59:59.999Z"
     },

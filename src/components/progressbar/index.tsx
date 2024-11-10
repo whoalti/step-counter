@@ -8,7 +8,7 @@ export const Progress: React.FC = () => {
   const { sumOfSteps: totalSteps, stepGoal } = progressBarData;
   const percent = Math.floor(Math.min((totalSteps / stepGoal) * 100, 100));
 
-  console.log('render progressbar');
+  // console.log('render progressbar');
 
   const css3 =
     percent > 94

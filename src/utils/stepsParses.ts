@@ -1,4 +1,4 @@
-import { steps, stepGoal } from '../data/steps1';
+import { steps, stepGoal } from '../data/steps5';
 
 
 
@@ -28,8 +28,10 @@ function parseData(data: StepData[]) {
         earliestStart: new Date(data[0].start_time),
         latestEnd: new Date(data[0].end_time)
     });
-    const timeDifference = Math.ceil((latestEnd.getTime() - earliestStart.getTime()) / (1000 * 60 * 60));
-    const arrayLength = timeDifference < 12 ? 12 : timeDifference;
+    const timeDifference = Math.ceil((latestEnd.getTime() - earliestStart.getTime()) / (1000 * 60 * 60)+1);
+    // console.log(earliestStart, latestEnd, timeDifference, (latestEnd.getTime() - earliestStart.getTime()) / (1000 * 60 * 60)+1);
+
+    const arrayLength = Math.max(timeDifference, 12);
 
     const arr: ParsedData[] = new Array(arrayLength).fill(0).map(() => ({ steps: 0, realSteps: 0, color: "#A9A9A9" }));
     const steps1 = new Array(arrayLength).fill(0).map(() => ({ steps: 0, color: "#A9A9A9" }));
@@ -41,11 +43,11 @@ function parseData(data: StepData[]) {
         const hoursDiff = Math.floor((entryStart.getTime() - earliestStart.getTime()) / (1000 * 60 * 60));
         
         totalSteps += element.steps > 0 ? element.steps : 0;
-        console.log(hoursDiff, maxHoursDifIndex, element.steps);
+        // console.log(hoursDiff, maxHoursDifIndex, element.steps);
         if (hoursDiff >= 0 && maxHoursDifIndex < hoursDiff && element.steps > 0) {
             maxHoursDifIndex = hoursDiff;
         }
-        console.log("element steps", element.steps);
+        // console.log("element steps", element.steps);
         if (hoursDiff >= 0 && hoursDiff <= arrayLength) {
             arr[hoursDiff].steps += element.steps;
             arr[hoursDiff].realSteps += element.steps;
@@ -55,8 +57,8 @@ function parseData(data: StepData[]) {
         }
         
     });
-    console.log(maxHoursDifIndex)
-    console.log(arr);
+    // console.log(maxHoursDifIndex)
+    // console.log(arr);
     arr[maxHoursDifIndex].legend = 'Now';
 
     return { arr, totalSteps, steps1 };

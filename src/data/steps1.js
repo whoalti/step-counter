@@ -57,7 +57,7 @@ export const steps = [
   {
     steps: 500,
     start_time: "2024-11-09T22:00:00.000Z",
-    end_time: "2024-11-09T23:00:00.000Z"
+    end_time: "2024-11-09T22:00:00.000Z"
   }
 ];
 
