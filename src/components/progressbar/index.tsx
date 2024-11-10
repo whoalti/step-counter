@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.scss';
 import ProgressBar from '@ramonak/react-progress-bar';
-import { stepGoal, steps } from '../../data/steps.js';
 import { IoIosLink } from 'react-icons/io';
-
-interface Step {
-  steps: number;
-  start_time: string;
-}
-
-const calcSteps = (stepsData: Step[]): number => {
-  return stepsData.reduce((sum, element) => sum + (element.steps > 0 ? element.steps : 0), 0);
-};
+import { progressBarData } from '../../utils/stepsParses.js';
 
 export const Progress: React.FC = () => {
-  const [totalSteps, setTotalSteps] = useState<number>(calcSteps(steps));
-  const [percent, setPercent] = useState<number>(Math.min((totalSteps / stepGoal) * 100, 100));
+  const { sumOfSteps: totalSteps, stepGoal } = progressBarData;
+  const percent = Math.floor(Math.min((totalSteps / stepGoal) * 100, 100));
 
-  useEffect(() => {
-    const updatedTotalSteps = calcSteps(steps);
-    setTotalSteps(updatedTotalSteps);
-    setPercent(Math.round(Math.min((updatedTotalSteps / stepGoal) * 100, 100)));
-  }, [steps]);
+  console.log('render progressbar');
 
-  const css3 = percent > 94
-    ? `.progress-label { padding: 10px; }`
-    : `.progress-label { padding: 10px; margin: 10px -50px 10px 20px; }`;
+  const css3 =
+    percent > 94
+      ? `.progress-label { padding: 10px; }`
+      : `.progress-label { padding: 10px; margin: 10px -50px 10px 20px; }`;
 
   return (
     <>
@@ -50,4 +38,3 @@ export const Progress: React.FC = () => {
     </>
   );
 };
-
