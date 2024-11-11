@@ -1,4 +1,4 @@
-import { steps, stepGoal } from '../data/steps5';
+import { steps, stepGoal } from '../data/steps4';
 
 
 
@@ -33,8 +33,9 @@ function parseData(data: StepData[]) {
 
     const arrayLength = Math.max(timeDifference, 12);
 
-    const arr: ParsedData[] = new Array(arrayLength).fill(0).map(() => ({ steps: 0, realSteps: 0, color: "#A9A9A9" }));
-    const steps1 = new Array(arrayLength).fill(0).map(() => ({ steps: 0, color: "#A9A9A9" }));
+    // const arr: ParsedData[] = new Array(arrayLength).fill({}).map(() => ({ steps: 0, realSteps: 0, color: "#A9A9A9" })); // not to do!
+    const arr: ParsedData[] = Array.from({length: arrayLength}, () => ({ steps: 0, realSteps: 0, color: "#A9A9A9" }));
+    const steps1 = new Array(arrayLength).fill(0).map(() => ({ steps: 0, color: "#A9A9A9" })); // rework 
     let maxHoursDifIndex = -1; 
     let totalSteps = 0;
 
@@ -43,12 +44,16 @@ function parseData(data: StepData[]) {
         const hoursDiff = Math.floor((entryStart.getTime() - earliestStart.getTime()) / (1000 * 60 * 60));
         
         totalSteps += element.steps > 0 ? element.steps : 0;
-        // console.log(hoursDiff, maxHoursDifIndex, element.steps);
+        // console.log(hoursDiff, maxHoursDifIndex, element.steps); 
+
+        // 100 -> 20
+        // 100 -> 0
+
         if (hoursDiff >= 0 && maxHoursDifIndex < hoursDiff && element.steps > 0) {
             maxHoursDifIndex = hoursDiff;
         }
         // console.log("element steps", element.steps);
-        if (hoursDiff >= 0 && hoursDiff <= arrayLength) {
+        if (hoursDiff >= 0 && hoursDiff <= arrayLength) { // use here Object.assign()
             arr[hoursDiff].steps += element.steps;
             arr[hoursDiff].realSteps += element.steps;
             arr[hoursDiff].color = "#0dcf6e";
