@@ -39,6 +39,7 @@ const Bars: React.FC = () => {
             
             <div className="bar-chart-container">
                 <ResponsiveContainer width="100%" height="100%">
+                    
                     <BarChart data={data1} className="recharts-bar-chart">
                         <Tooltip 
                             content={<CustomTooltip  />}

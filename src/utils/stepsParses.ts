@@ -1,7 +1,6 @@
 import { steps, stepGoal } from '../data/steps4';
 
 
-
 interface StepData {
     start_time: string;
     end_time: string;

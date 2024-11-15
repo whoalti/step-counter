@@ -1,7 +1,7 @@
 
 export const steps = [
     {
-      steps: 1500,
+      steps: 2000,
       start_time: "2024-11-09T08:00:00.000Z",
       end_time: "2024-11-09T08:00:00.000Z"
     },

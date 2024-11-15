@@ -1,0 +1,32 @@
+
+$base-bar-green: #00A651;
+$base-bar-gray: #A9A9A9;
+$base-light-gray: #888;
+$base-dark-gray: #333;
+$base-light-green: #0dcf6e;
+.new-progress-bar {
+  background-color: #e1e0e0;
+  /* min-width: 100px; */
+  width: 100%;
+  position: relative;
+  height: 35px;  /* Add fixed height */
+}
+
+.new-progress-bar-completed {
+  background-color: $base-light-green;
+  height: 100%;  /* Fill parent height */
+  position: relative;  /* For absolute positioning of pseudo-element */
+}
+
+.new-progress-label {
+  content: attr(data-label);
+  position: absolute;
+  right: -40px;  /* Move it outside */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7a7a7a;
+}
+
+.right {
+  right: 10px;
+}
